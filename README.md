@@ -13,4 +13,4 @@ docker-compose up --build
 ```
 
 after some time (installing dependencies and starting the servers, you should be able to connect to http://localhost:3000/ with your brouser.
-Happy Hacking!
+Happy Hacking!!
