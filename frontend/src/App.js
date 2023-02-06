@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
 
-  fetch('/data').then(res => res.json()).then(data => {
+  fetch('/api/data').then(res => res.json()).then(data => {
     console.log(data);
   });
 

@@ -13,5 +13,5 @@ def client():
     yield client
 
 def test_get_data(client):
-  res = client.get('/data')
+  res = client.get('/api/data')
   assert res.status_code == 200

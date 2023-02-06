@@ -2,16 +2,16 @@ services:
   be:
     build:
       context: ./backend
-      target: run-dev
+      target: run-prod
     volumes:
       - ./backend/server.py:/backend/server.py
     image: be
 
-  client:
+  prod-client:
     build:
-      context: ./frontend
-    volumes:
-      - ./frontend/src:/frontend/src
-    image: fe
+      context: ./prod-frontend
+    image: nginx
     ports:
-      - "3000:3000"
+      - "80:80"
+    depends_on:
+      - be

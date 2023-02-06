@@ -5,13 +5,14 @@ FROM python:3.9 as base
   COPY requirements.txt ./
   RUN pip install -r ./requirements.txt
 
-# docker build -t test --target test ./backend/
-# docker run test 
+# docker build -t test --target test ./backend/ && docker run test 
 FROM base as test
   COPY server.py ./
   COPY ./test/test_api.py ./
   CMD pytest
 
-FROM base as run-server
-  # COPY server.py ./ # this is done in docker-compose
+FROM base as run-dev
   CMD ["python", "server.py"]
+
+FROM base as run-prod
+  CMD ["gunicorn", "-b", ":5001", "server:app"]
